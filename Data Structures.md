@@ -200,3 +200,70 @@ countries.sort()
 codes=[x[0:3].upper() for x in countries]
 print(codes)
 ```
+
+Ordenar datos anidados en una lista por uno de sus filas
+```python
+population = [
+    ('Istanbul', 'Turkey', 15462452),
+    ('Moscow', 'Russia', 12195221),
+    ('London', 'United Kingdom', 9126366),
+    ('Saint Petersburg', 'Russia', 5383890),
+    ('Berlin', 'Germany', 3748148),
+    ('Madrid', 'Spain', 3223334),
+    ('Kyiv', 'Ukraine', 2950800),
+    ('Rome', 'Italy', 2844750),
+    ('Paris', 'France', 2140526),
+    ('Minsk', 'Belarus', 1982444),
+]
+
+population.sort(key=lambda row: row[1])
+for fila in population:
+    print(fila)
+```
+
+Buscar datos de una lista con funcion filter
+```python
+population = [
+    ('Istanbul', 'Turkey', 15462452),
+    ('Moscow', 'Russia', 12195221),
+    ('London', 'United Kingdom', 9126366),
+    ('Saint Petersburg', 'Russia', 5383890),
+    ('Berlin', 'Germany', 3748148),
+    ('Madrid', 'Spain', 3223334),
+    ('Kyiv', 'Ukraine', 2950800),
+    ('Rome', 'Italy', 2844750),
+    ('Paris', 'France', 2140526),
+    ('Minsk', 'Belarus', 1982444),
+]
+
+russia: ist = list(filter(lambda country: country == "Russia", population))
+print(russia)
+#o#
+russia: ist = list(filter(lambda country: "Russia" in country, population))
+
+
+```
+
+Buscar y modificar una tupla dentro de una lista por sustiticion
+```python
+population = [
+    ('Istanbul', 'Turkey', 15462452),
+    ('Moscow', 'Russia', 12195221),
+    ('London', 'United Kingdom', 9126366),
+    ('Saint Petersburg', 'Russia', 5383890),
+    ('Berlin', 'Germany', 3748148),
+    ('Madrid', 'Spain', 3223334),
+    ('Kyiv', 'Ukraine', 2950800),
+    ('Rome', 'Italy', 2844750),
+    ('Paris', 'France', 2140526),
+    ('Minsk', 'Belarus', 1982444),
+]
+
+kiev_id: int = [column for column, row in enumerate(population) if row[1] == "Russia"][0]
+# El cero dentro de corchetes es para seleccionar el numero de repeticion, si es valor unico == 0
+kiev_list: list = list(population[kiev_id])
+# Asigna los valores en una lista
+kiev_list[1] = "RUSSIA"
+population[kiev_id] = tuple(kiev_list)
+```
+
